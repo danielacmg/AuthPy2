@@ -5,13 +5,13 @@ export const Footer = () => (
     <p>
       Made by{" "}
       <a
-        className="texttext-decoration-none"
+        className="text-decoration-none pink"
         href="https://github.com/danielacmg"
         data-toggle="tooltip"
         data-placement="bottom"
         title="go to my github page"
       >
-        d
+        danielacmg
       </a>
     </p>
   </footer>

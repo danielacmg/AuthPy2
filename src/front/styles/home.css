@@ -5,3 +5,38 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+.bg-pink {
+  background-color: #ff69b4;
+}
+
+.pink {
+  color: #ff69b4;
+}
+a.pink:hover {
+  color: grey !important;
+}
+
+.btn-secondary:hover {
+  background-color: #ff69b4;
+  /* opacity: 50%; */
+}
+/* navbar-brand:hover {
+  color: white !important;
+}
+
+
+
+.btn:hover {
+  opacity: 90%;
+} */
+
+/* a {
+  text-decoration: none;
+} */
+
+a.pink-brand {
+  color: #ff69b4;
+}
+a.pink-brand:hover {
+  color: white !important;
+}
