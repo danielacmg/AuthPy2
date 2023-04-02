@@ -1,8 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
 export const LogOut = () => {
+  const { store, actions } = useContext(Context);
+
+  function handleClick(e) {
+    e.preventDefault();
+    actions.removeToken();
+  }
+  function doNothing(e) {
+    e.preventDefault();
+  }
   return (
     <div className="dropdown d-flex  text-secondary  ">
       <button
@@ -19,22 +28,36 @@ export const LogOut = () => {
       <div className="dropdown-menu dropdown-menu-end">
         {" "}
         <form className="px-4 py-3">
-          <div className="form-group pink row mb-2">
+          <div className="form-group text-secondary row mb-2">
             <label htmlFor="user_email">
               Are you sure you want to log out?
             </label>
           </div>
 
-          <div className="row mt-2">
-            <button type="submit" className="btn bg-pink text-white">
-              Yes
-            </button>
-            <button type="submit" className="btn btn-secondary text-white">
-              No
-            </button>
+          <div className="btn-toolbar mb-3" role="toolbar">
+            <div className="btn-group mr-2" role="group">
+              <button
+                type="submit"
+                className="btn bg-pink text-white"
+                onClick={(e) => handleClick(e)}
+              >
+                Yes
+              </button>
+            </div>
+            <div className="btn-group mr-2" role="group">
+              {" "}
+            </div>
+            <div className="btn-group mr-2" role="group">
+              <button
+                className="btn btn-secondary text-white"
+                onClick={(e) => doNothing(e)}
+              >
+                No
+              </button>
+            </div>
           </div>
         </form>
-        <div className="dropdown-divider"></div>
+        {/* <div className="dropdown-divider"></div> */}
       </div>
     </div>
   );

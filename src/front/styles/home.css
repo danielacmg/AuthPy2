@@ -40,3 +40,13 @@ a.pink-brand {
 a.pink-brand:hover {
   color: white !important;
 }
+
+.btn-danger b {
+  display: inline;
+}
+.btn-danger:not(.collapsed) span {
+  display: none;
+}
+.btn-danger.collapsed b {
+  display: none;
+}

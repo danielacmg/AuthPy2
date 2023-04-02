@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/home.css";
 import { LoginForm } from "./loginForm";
+import { LogOut } from "./logOut";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const { store, actions } = useContext(Context);
+  const token = store.token;
+
   return (
     <nav className="navbar navbar-expand-lg bg-secondary d-flex">
       <div className="container-fluid">
         <div className="mr-auto p-2 pink-brand">
-          <a className="navbar-brand pink-brand" href="#">
+          <Link to={"/"} className="navbar-brand pink-brand">
             JWT Authentication
-          </a>
+          </Link>
         </div>
 
         <div>
@@ -26,35 +31,21 @@ export const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            {/* <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Link
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link disabled"
-                href="#"
-                tabindex="-1"
-                aria-disabled="true"
-              >
-                Disabled
-              </a>
-            </li>
-          </ul> */}
+            {token && token !== "" && token !== undefined ? (
+              <div className="collapse navbar-collapse">
+                <Link to={"/restricted"}>
+                  <button className="btn btn-danger m-2" type="button">
+                    {/* <i className="fa-solid fa-do-not-enter text-white"></i>
+                    <i className="fa-regular fa-do-not-enter"></i> */}
+                    <i className="fa-solid fa-ban m-1"></i> Restricted
+                  </button>
+                </Link>
 
-            <LoginForm />
-
-            {/* <form className="d-flex">
-                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button className="btn btn-outline-success" type="submit">Search</button>
-            </form> */}
+                <LogOut />
+              </div>
+            ) : (
+              <LoginForm />
+            )}
           </div>
         </div>
       </div>
