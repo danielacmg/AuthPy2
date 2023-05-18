@@ -7,6 +7,7 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Restricted } from "./pages/restricted";
 import injectContext from "./store/appContext";
+import { NotFound } from "./pages/notFound";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -27,7 +28,7 @@ const Layout = () => {
             <Route element={<Restricted />} path="/restricted" />
             <Route element={<Demo />} path="/demo" />
             <Route element={<Single />} path="/single/:theid" />
-            <Route element={<h1>Not found!</h1>} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </ScrollToTop>
